@@ -1,0 +1,126 @@
+﻿<Window x:Class="IndusValleyCivilizationWrittingSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:IndusValleyCivilizationWrittingSystem"
+        mc:Ignorable="d"
+        Title="IndusValleyCivilizationWritingSystem" Height="600" Width="800" Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Border Background="Orange"></Border>
+            <TextBlock Text="Learn Writing System of Indus Valley Civilization" VerticalAlignment="Bottom" Margin="5" FontSize="20" FontWeight="Bold" Foreground="DarkBlue"></TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,0">
+                <Image Source="logo.jpg" Margin="5" ></Image>
+                <TextBlock FontFamily="{StaticResource IconFont}" Text="&#xe000;"></TextBlock>
+                <!--<StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <TextBlock Text="Knowledge" FontSize="16" Foreground="Red" FontWeight="Bold"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Club" FontSize="16" Foreground="Gray" FontWeight="Bold"></TextBlock>
+                        <Border Width="12"></Border>
+                        <TextBlock Text="2022" FontSize="16" Foreground="Red" FontWeight="Bold"></TextBlock>
+                    </StackPanel>
+                </StackPanel>-->
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical" Grid.Row="1">
+                    <!--<TextBlock Style="{StaticResource signTxt}" Text="&#x006d;&#x0304;&#x0069;"></TextBlock>
+                <TextBlock Style="{StaticResource signTxt}" Text="m&#x012a;n"></TextBlock>-->
+                    <TextBlock Text="Enter sign name to filter" Margin="5,0"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="tbFilter" Height="30" Margin='5,0,0,0' Width="160"></TextBox>
+                        <Button x:Name="btnFilter" Content="Get" Width="30" Height="30" Click="btnFilter_Click"></Button>
+                    </StackPanel>
+                </StackPanel>
+                
+                <ListView Grid.Row="2" Margin="5" Name="lv" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" SelectionChanged="lv_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Height="50" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="80"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <!--<Image Source="{Binding ImageFile}"></Image>-->
+                                <TextBlock Text="{Binding Index}" HorizontalAlignment="Left"></TextBlock>
+                                <Viewbox Margin="5">
+                                    <TextBlock Style="{StaticResource signTxt}" Text="{Binding ImageFile}"></TextBlock>
+                                </Viewbox>
+                                <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center">
+                                    <TextBlock  Text="{Binding Name}"></TextBlock>
+                                    <!--<Border Height="5"></Border>
+                                    <TextBlock Text="{Binding Meaning}"></TextBlock>-->
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <Grid Grid.Column="1" x:Name="gdDetail">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="200"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Vertical" Grid.Row="1" Margin="5">
+                    <TextBlock Text="Details" FontSize="20" FontWeight="Bold"></TextBlock>
+                    <StackPanel Orientation="Horizontal" Height="40" VerticalAlignment="Center">
+                        <TextBlock  Text="Name" Style="{StaticResource rowTb}"></TextBlock>
+                        <TextBox Style="{StaticResource rowTxt}" Text="{Binding Name}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="Sign" Style="{StaticResource rowTb}"></TextBlock>
+                        <TextBox Text="{Binding FilePath}" Style="{StaticResource rowTxt}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="Intented Meaning" Style="{StaticResource rowTb}"></TextBlock>
+                        <TextBox Style="{StaticResource rowTxt}" Text="{Binding Meaning}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="Shape in Dravidian" Style="{StaticResource rowTb}"></TextBlock>
+                        <TextBox Style="{StaticResource rowTxt}" Text="{Binding ShapeInDravidian}"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Text="Notes" Style="{StaticResource rowTb}"></TextBlock>
+                        <TextBox Style="{StaticResource rowTxt}" Text="{Binding Notes}" Height="150" TextWrapping="WrapWithOverflow"  ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Disabled"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
+                        <Button x:Name="btnAdd" Content="Add" Width="80" Height="30" Margin="5,0"  Click="btnAdd_Click"></Button>
+                        <Button x:Name="btnDelet" Content="Delete" Width="80" Height="30" Visibility="{Binding Visibility}" Click="btnDelet_Click"></Button>
+                        <Button x:Name="btnMore" Content="View all signs" Width="90" Height="30" Margin="5,0" Click="btnMore_Click"></Button>
+                    </StackPanel>
+                </StackPanel>
+                <Grid Grid.Column="1" Grid.Row="1" >
+                    <Border Width="160" Height="160" VerticalAlignment="Top" HorizontalAlignment="Left">
+                        <Viewbox>
+                            <TextBlock Style="{StaticResource signTxt}" Text="{Binding ImageFile}"></TextBlock>
+                        </Viewbox>
+                    </Border>
+                    
+                </Grid>
+            </Grid>
+
+        </Grid>
+        <Button x:Name="btnAbout" Grid.Row="2" Grid.ColumnSpan="2" Margin="10" BorderThickness="0" Foreground="Blue" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="Transparent" Content="About Indus Valley Writing system" Click="btnAbout_Click"></Button>
+
+    </Grid>
+</Window>

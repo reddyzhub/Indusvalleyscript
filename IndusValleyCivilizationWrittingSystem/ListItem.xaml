@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="IndusValleyCivilizationWrittingSystem.ListItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:IndusValleyCivilizationWrittingSystem"
+             mc:Ignorable="d" 
+             TextElement.FontSize="16"
+             Height='50' Width="200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Image Source="{Binding ImageFile}"></Image>
+        <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center">
+            <TextBlock Text="{Binding Name}" ></TextBlock>
+            <Border Height="5"></Border>
+            <TextBlock Text="{Binding Meaning}"></TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>
